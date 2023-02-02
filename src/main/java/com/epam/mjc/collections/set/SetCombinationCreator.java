@@ -6,7 +6,14 @@ import java.util.Set;
 public class SetCombinationCreator {
     public Set<String> createSetCombination(Set<String> firstSet, Set<String> secondSet, Set<String> thirdSet) {
         Set<String> set = new HashSet<>();
-
+        set.addAll(firstSet);
+        set.retainAll(secondSet);
+        set.removeAll(thirdSet);
+        Set<String> set2 = new HashSet<>();
+        set2.addAll(thirdSet);
+        set2.removeAll(firstSet);
+        set2.removeAll(secondSet);
+        set.addAll(set2);
 
         return set;
 
