@@ -7,16 +7,22 @@ import java.util.List;
 public class HashSetCreator {
     public HashSet<Integer> createHashSet(List<Integer> sourceList) {
         HashSet<Integer> hashSet = new HashSet<>();
-        HashSet<Integer> hashSet1 = new HashSet<>();
-        for (int i = 0; i < sourceList.size(); i++) {
-            if (sourceList.get(i) % 2 == 0) {
-                hashSet.add(sourceList.get(i));
-                hashSet.add(sourceList.get(i) / 2);
-            } else if (sourceList.get(i) % 2 != 0) {
-                hashSet.add(sourceList.get(i));
-                hashSet.add(sourceList.get(i) * 2);
-            }
+        for (int it = 0; it < sourceList.size(); it++) {
 
+            if (sourceList.get(it) % 2 != 0){
+                hashSet.add(sourceList.get(it));
+                hashSet.add(sourceList.get(it)*2);
+            }else {
+                int now = sourceList.get(it);
+                while(now > 0){
+                    hashSet.add(now);
+                    now /= 2;
+                    if (now % 2 != 0){
+                        hashSet.add(now);
+                        break;
+                    }
+                }
+            }
         }
         return hashSet;
     }
